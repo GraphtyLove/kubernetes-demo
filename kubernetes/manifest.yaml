@@ -1,0 +1,38 @@
+# Create a NAMESPACE
+---
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: api-demo-namespace
+
+# Create a POD
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: api-demo-pod
+  namespace: api-demo-namespace
+  labels:
+    app: becode-api
+spec:
+  containers:
+    - name: api-demo-container
+      image: graphtylove/api-demo:latest
+      ports:
+        - containerPort: 80
+
+# Create a SERVICE
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: api-demo-service
+  namespace: api-demo-namespace
+spec:
+  selector:
+    app: becode-api
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: ClusterIP
