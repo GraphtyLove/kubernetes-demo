@@ -1,6 +1,8 @@
 # kubernetes-demo
 
-Small Demo to show how to deploy on Kubernetes
+Small Demo to show how to deploy on Kubernetes.
+
+**[Slides here](https://docs.google.com/presentation/d/175mXUK2vpoTbcjPfJcrHBIe9KFPQFT_7/)**
 
 ## API
 
@@ -46,3 +48,4 @@ Then you need to forward the port to your local machine:
 ```bash
 kubectl port-forward -n api-demo-namespace service/api-demo-service 8080:80
 ```
+
