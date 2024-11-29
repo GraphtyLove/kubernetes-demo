@@ -16,8 +16,13 @@ metadata:
     app: becode-api
 spec:
   containers:
+    # The container name
     - name: api-demo-container
-      image: graphtylove/api-demo:latest
+      # The image name (from Docker Hub)
+      image: <your-docker-hub-username>/api-demo:latest
+      # Ensure it will always pull the image to update it when you push a new version
+      imagePullPolicy: Always
+      # The port to expose to the service
       ports:
         - containerPort: 80
 
@@ -30,9 +35,12 @@ metadata:
   namespace: api-demo-namespace
 spec:
   selector:
+    # The app label we defined in the POD
     app: becode-api
   ports:
     - protocol: TCP
+      # Port of the service
       port: 80
+      # Port of the container
       targetPort: 80
   type: ClusterIP
